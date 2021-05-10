@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,4 +31,6 @@ public class Subject {
     @Column(name = "final_percent")
     private float finalPercent;
 
+    @OneToMany(mappedBy = "subject")
+    private List<ClassRoom> classRooms;
 }

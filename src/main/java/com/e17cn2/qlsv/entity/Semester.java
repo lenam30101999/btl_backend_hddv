@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,4 +22,9 @@ public class Semester {
     @Column(name = "semester_name")
     private String semesterName;
 
+    @OneToMany(mappedBy = "semester")
+    private List<ClassRoom> classRooms;
+
+    @OneToMany(mappedBy = "semester")
+    private List<Point> points;
 }
