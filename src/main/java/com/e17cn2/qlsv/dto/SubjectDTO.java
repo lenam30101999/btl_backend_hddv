@@ -14,18 +14,18 @@ public class SubjectDTO {
   
   private int id;
   
-  @JsonProperty( "subject_name")
+  @JsonProperty("subject_name")
   private String subjectName;
 
-  @JsonProperty( "attendance_percent")
+  @JsonProperty("attendance_percent")
   private float attendancePercent;
 
-  @JsonProperty( "test_percent")
+  @JsonProperty("test_percent")
   private float testPercent;
 
-  @JsonProperty( "project_percent")
+  @JsonProperty("project_percent")
   private float projectPercent;
 
-  @JsonProperty( "final_percent")
+  @JsonProperty("final_percent")
   private float finalPercent;
 }

@@ -2,11 +2,14 @@ package com.e17cn2.qlsv.mapper;
 
 import com.e17cn2.qlsv.dto.ClassroomDTO;
 import com.e17cn2.qlsv.dto.SemesterDTO;
+import com.e17cn2.qlsv.dto.SubjectDTO;
 import com.e17cn2.qlsv.entity.ClassRoom;
 import com.e17cn2.qlsv.entity.Semester;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+
+import com.e17cn2.qlsv.entity.Subject;
 import org.springframework.stereotype.Component;
 
 @Generated(
@@ -29,6 +32,16 @@ public class ModelMapperImpl implements ModelMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public SubjectDTO convertToSubjectDTO(Subject subject) {
+        return null;
+    }
+
+    @Override
+    public List<SubjectDTO> convertToSubjectDTOs(List<Subject> subjects) {
+        return null;
     }
 
     @Override
