@@ -1,7 +1,9 @@
 package com.e17cn2.qlsv.mapper;
 
 import com.e17cn2.qlsv.dto.ClassroomDTO;
+import com.e17cn2.qlsv.dto.SubjectDTO;
 import com.e17cn2.qlsv.entity.ClassRoom;
+import com.e17cn2.qlsv.entity.Subject;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -11,9 +13,12 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ModelMapper {
 
-  @Mappings({
-//      @Mapping(target = "subjectId", ignore = true),
-//      @Mapping(target = "semesterId", ignore = true)
-  })
+  @Mappings({})
   List<ClassroomDTO> convertToClassroomDTO(List<ClassRoom> classRooms);
+
+  @Mappings({})
+  SubjectDTO convertToSubjectDTO(Subject subject);
+
+  @Mappings({})
+  List<SubjectDTO> convertToSubjectDTOs(List<Subject> subjects);
 }
