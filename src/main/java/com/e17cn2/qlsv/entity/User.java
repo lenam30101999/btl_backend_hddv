@@ -28,7 +28,7 @@ public class User {
     private Manager manager;
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Student student;
-    @Column(name = "uid")
+    @Column(name = "uid", unique = true, nullable = false)
     private String uid;
 
 }
