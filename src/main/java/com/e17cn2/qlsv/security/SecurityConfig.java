@@ -23,8 +23,8 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
-@Autowired
-private FirebaseAuthenticationProvider authenticationProvider;
+    @Autowired
+    private FirebaseAuthenticationProvider authenticationProvider;
 
     @Bean
     @Override

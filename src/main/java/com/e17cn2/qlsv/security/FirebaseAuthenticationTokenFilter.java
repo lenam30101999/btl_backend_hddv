@@ -1,5 +1,6 @@
 package com.e17cn2.qlsv.security;
 
+import com.e17cn2.qlsv.exception.UnAuthorizedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.util.StringUtils;
@@ -33,8 +34,8 @@ public class FirebaseAuthenticationTokenFilter extends AbstractAuthenticationPro
                 token = bearerToken.substring(7, bearerToken.length());
             }
         }
-
-        return getAuthenticationManager().authenticate(new FirebaseAuthenticationToken(token));
+            Authentication authentication = getAuthenticationManager().authenticate(new FirebaseAuthenticationToken(token));
+            return authentication;
     }
 
     /**
