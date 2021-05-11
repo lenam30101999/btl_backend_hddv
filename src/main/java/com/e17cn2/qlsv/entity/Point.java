@@ -42,4 +42,8 @@ public class Point {
     @JoinColumn(name = "semester_id", nullable = false)
     private Semester semester;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "subject_id", nullable = false)
+    private Subject subject;
+
 }
