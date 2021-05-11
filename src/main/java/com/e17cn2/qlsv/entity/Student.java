@@ -18,7 +18,6 @@ import java.util.List;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "avatar_url")
     private String avatarUrl;
@@ -26,6 +25,7 @@ public class Student {
     private String studentCode;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "id")
+    @MapsId
     private User user;
 
     @ManyToMany(mappedBy = "student")
