@@ -1,5 +1,6 @@
 package com.e17cn2.qlsv.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,14 +11,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class StudentDTO {
+  private int id;
 
-    private int id;
+  private String name;
 
-    @JsonProperty("avatar_url")
-    private String avatarUrl;
-
-    @JsonProperty("student_code")
-    private String studentCode;
+  @JsonProperty("student_code")
+  private String studentCode;
 
 }

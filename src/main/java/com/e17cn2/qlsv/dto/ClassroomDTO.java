@@ -22,4 +22,5 @@ public class ClassroomDTO {
 
   @JsonProperty("semester_id")
   private int semesterId;
+
 }

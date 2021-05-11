@@ -1,6 +1,7 @@
 package com.e17cn2.qlsv.controller;
 
 import com.e17cn2.qlsv.dto.ClassroomDTO;
+import com.e17cn2.qlsv.response.ClassResponse;
 import com.e17cn2.qlsv.service.impl.ClassroomService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class ClassroomController {
   }
 
   @GetMapping
-  public ResponseEntity<?> getAllClassrooms(){
-    List<ClassroomDTO> classroomDTOs = classRoomService.getAllClassrooms();
+  public ResponseEntity<?> getAllClassrooms(@RequestParam("semester_id") int semesterId){
+    List<ClassResponse> classroomDTOs = classRoomService.getAllClassroomsBySemester(semesterId);
     return new ResponseEntity<>(classroomDTOs, HttpStatus.OK);
   }
 }
