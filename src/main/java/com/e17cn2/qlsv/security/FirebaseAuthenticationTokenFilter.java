@@ -31,11 +31,11 @@ public class FirebaseAuthenticationTokenFilter extends AbstractAuthenticationPro
         {
             String bearerToken = request.getHeader("Authorization");
             if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-                token = bearerToken.substring(7, bearerToken.length());
+                token = bearerToken.substring(7);
             }
         }
-            Authentication authentication = getAuthenticationManager().authenticate(new FirebaseAuthenticationToken(token));
-            return authentication;
+
+        return getAuthenticationManager().authenticate(new FirebaseAuthenticationToken(token));
     }
 
     /**

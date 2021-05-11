@@ -1,5 +1,6 @@
 package com.e17cn2.qlsv.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,17 +11,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @Builder
-public class ClassroomDTO {
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class StudentDTO {
   private int id;
 
-  @JsonProperty("class_name")
-  private String className;
+  private String name;
 
-  @JsonProperty("subject_id")
-  private int subjectId;
-
-  @JsonProperty("semester_id")
-  private int semesterId;
+  @JsonProperty("student_code")
+  private String studentCode;
 
 }

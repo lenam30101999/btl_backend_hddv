@@ -15,7 +15,7 @@ public class HandleException extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnAuthorizedException.class)
     public ResponseEntity<?> unauthorizedException(UnAuthorizedException ex, WebRequest webRequest){
         BaseResponse baseResponse = new BaseResponse(
-                null, ex.getMessage(), 401,
+                null, ex.getMessage(), HttpStatus.UNAUTHORIZED.value(),
                 ((ServletWebRequest) webRequest).getRequest().getServletPath());
         return new ResponseEntity<>(baseResponse, HttpStatus.UNAUTHORIZED);
     }

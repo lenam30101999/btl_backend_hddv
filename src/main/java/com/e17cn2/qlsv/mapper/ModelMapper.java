@@ -8,6 +8,7 @@ import com.e17cn2.qlsv.entity.ClassRoom;
 import com.e17cn2.qlsv.entity.Point;
 import com.e17cn2.qlsv.entity.Subject;
 import com.e17cn2.qlsv.entity.Semester;
+import com.e17cn2.qlsv.response.ClassResponse;
 import com.e17cn2.qlsv.response.PointResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,7 +20,8 @@ import java.util.List;
 public interface ModelMapper {
 
   @Mappings({})
-  List<ClassroomDTO> convertToClassroomDTO(List<ClassRoom> classRooms);
+  List<ClassResponse> convertClassResponse(List<ClassRoom> classRooms);
+
 
   @Mappings({})
   SubjectDTO convertToSubjectDTO(Subject subject);
@@ -38,9 +40,4 @@ public interface ModelMapper {
       @Mapping(target = "avg", source = "avgPoint")
   })
   PointResponse convertToPointResponse(Point point);
-
-  @Mappings({
-      @Mapping(target = "semesterResponse", ignore = true)
-  })
-  PointResponse getPointResponse(PointResponse pointResponse);
 }
