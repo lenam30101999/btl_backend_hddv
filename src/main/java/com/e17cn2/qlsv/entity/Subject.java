@@ -33,4 +33,7 @@ public class Subject {
 
     @OneToMany(mappedBy = "subject")
     private List<ClassRoom> classRooms;
+
+    @OneToMany(mappedBy = "subject")
+    private List<Point> points;
 }
