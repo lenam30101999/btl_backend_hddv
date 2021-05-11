@@ -5,11 +5,7 @@ import com.e17cn2.qlsv.entity.Semester;
 import com.e17cn2.qlsv.entity.Student;
 import com.e17cn2.qlsv.entity.Subject;
 import com.e17cn2.qlsv.mapper.ModelMapper;
-import com.e17cn2.qlsv.repository.ClassRoomRepository;
-import com.e17cn2.qlsv.repository.PointRepository;
-import com.e17cn2.qlsv.repository.SemesterRepository;
-import com.e17cn2.qlsv.repository.SubjectRepository;
-import com.e17cn2.qlsv.repository.UserRepository;
+import com.e17cn2.qlsv.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BaseService {
@@ -19,6 +15,7 @@ public class BaseService {
   @Autowired protected PointRepository pointRepository;
   @Autowired protected UserRepository userRepository;
   @Autowired protected ModelMapper modelMapper;
+  @Autowired protected StudentRepository studentRepository;
 
   protected Subject initSubject(int id){
     return subjectRepository.findSubjectById(id).orElse(null);

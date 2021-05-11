@@ -1,13 +1,7 @@
 package com.e17cn2.qlsv.mapper;
 
-import com.e17cn2.qlsv.dto.ClassroomDTO;
-import com.e17cn2.qlsv.dto.PointDTO;
-import com.e17cn2.qlsv.dto.SubjectDTO;
-import com.e17cn2.qlsv.dto.SemesterDTO;
-import com.e17cn2.qlsv.entity.ClassRoom;
-import com.e17cn2.qlsv.entity.Point;
-import com.e17cn2.qlsv.entity.Subject;
-import com.e17cn2.qlsv.entity.Semester;
+import com.e17cn2.qlsv.dto.*;
+import com.e17cn2.qlsv.entity.*;
 import com.e17cn2.qlsv.response.PointResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -43,4 +37,8 @@ public interface ModelMapper {
       @Mapping(target = "semesterResponse", ignore = true)
   })
   PointResponse getPointResponse(PointResponse pointResponse);
+
+  @Mappings({})
+  List<StudentDTO> convertToStudentDTOs(List<Student> students);
+
 }
