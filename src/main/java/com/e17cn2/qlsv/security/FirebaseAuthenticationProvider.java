@@ -1,6 +1,8 @@
 package com.e17cn2.qlsv.security;
 
 
+import com.e17cn2.qlsv.entity.User;
+import com.e17cn2.qlsv.service.impl.UserService;
 import com.google.api.core.ApiFuture;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseToken;
@@ -19,8 +21,8 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @Override
     public boolean supports(Class<?> authentication) {
@@ -41,7 +43,11 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
         try {
             FirebaseToken token = task.get();
             FirebaseUserDetails created = new FirebaseUserDetails(token.getUid(), token.getName(), token.getEmail());
-//            created = userService.createUserAccount(created);
+            User user = new User();
+            user.setUid(created.getUid());
+            user.setPassword("");
+            user.setUsername(created.getEmail());
+             userService.addUser(user);
             return created;
         } catch (InterruptedException | ExecutionException e) {
             throw new SessionAuthenticationException(e.getMessage());

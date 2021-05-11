@@ -9,6 +9,7 @@ import com.e17cn2.qlsv.repository.ClassRoomRepository;
 import com.e17cn2.qlsv.repository.PointRepository;
 import com.e17cn2.qlsv.repository.SemesterRepository;
 import com.e17cn2.qlsv.repository.SubjectRepository;
+import com.e17cn2.qlsv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BaseService {
@@ -16,6 +17,7 @@ public class BaseService {
   @Autowired protected SemesterRepository semesterRepository;
   @Autowired protected SubjectRepository subjectRepository;
   @Autowired protected PointRepository pointRepository;
+  @Autowired protected UserRepository userRepository;
   @Autowired protected ModelMapper modelMapper;
 
   protected Subject initSubject(int id){
