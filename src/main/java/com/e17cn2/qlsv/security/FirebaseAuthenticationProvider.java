@@ -1,8 +1,11 @@
 package com.e17cn2.qlsv.security;
 
 
+import com.e17cn2.qlsv.entity.Student;
 import com.e17cn2.qlsv.entity.User;
 import com.e17cn2.qlsv.exception.UnAuthorizedException;
+import com.e17cn2.qlsv.repository.StudentRepository;
+import com.e17cn2.qlsv.service.impl.StudentService;
 import com.e17cn2.qlsv.service.impl.UserService;
 import com.google.api.core.ApiFuture;
 import com.google.api.gax.grpc.GrpcStatusCode;
@@ -27,7 +30,10 @@ import java.util.concurrent.ExecutionException;
 public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
     @Autowired
-    private UserService userService;
+    private StudentService studentService;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @Override
     public boolean supports(Class<?> authentication) {
@@ -46,12 +52,17 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
         ApiFuture<FirebaseToken> task = FirebaseAuth.getInstance().verifyIdTokenAsync(authenticationToken.getToken());
         try {
             FirebaseToken token = task.get();
-            FirebaseUserDetails created = new FirebaseUserDetails(token.getUid(), token.getName(), token.getEmail());
+            FirebaseUserDetails created = new FirebaseUserDetails(token.getUid(), token.getName(), token.getEmail(), token.getPicture());
             User user = new User();
             user.setUid(created.getUid());
             user.setPassword("");
             user.setUsername(created.getEmail());
-            userService.addUser(user);
+
+            Student student = new Student();
+            student.setAvatarUrl(created.getAvatarUrl());
+            student.setUser(user);
+            studentService.addUser(student, user);
+
             return created;
         } catch (InterruptedException | ExecutionException e) {
             throw new SessionAuthenticationException(e.getMessage());

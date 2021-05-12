@@ -22,11 +22,13 @@ public class FirebaseUserDetails implements UserDetails {
     private final String password = null;
     private String username;
     private String email;
+    private String avatarUrl;
 
-    public FirebaseUserDetails(String uid, String username, String email) {
+    public FirebaseUserDetails(String uid, String username, String email, String avatarUrl) {
         this.uid = uid;
         this.username = username;
         this.email = email;
+        this.avatarUrl = avatarUrl;
     }
 
     @Override
