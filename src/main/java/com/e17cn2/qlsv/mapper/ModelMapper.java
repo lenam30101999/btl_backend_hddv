@@ -36,7 +36,8 @@ public interface ModelMapper {
   PointResponse convertToPointResponse(Point point);
 
   @Mappings({
-      @Mapping(target = "name", source = "user.username")
+      @Mapping(target = "name", source = "user.username"),
+      @Mapping(target = "studentCode", source = "studentCode")
   })
   StudentDTO convertToStudentDTO(Student student);
 
