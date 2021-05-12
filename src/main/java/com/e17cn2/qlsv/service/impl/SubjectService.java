@@ -69,9 +69,12 @@ public class SubjectService extends BaseService {
 
   public SubjectDTO getSubjectByTextSearch(String textSearch){
     Subject subject = subjectRepository.getSubjectByTextSearch(textSearch);
-    SubjectDTO subjectDTO = new SubjectDTO();
-    subjectDTO.setId(subject.getId());
-    subjectDTO.setSubjectName(subject.getSubjectName());
-    return subjectDTO;
+    if (Objects.nonNull(subject)) {
+      SubjectDTO subjectDTO = new SubjectDTO();
+      subjectDTO.setId(subject.getId());
+      subjectDTO.setSubjectName(subject.getSubjectName());
+      return subjectDTO;
+    }
+    return null;
   }
 }
