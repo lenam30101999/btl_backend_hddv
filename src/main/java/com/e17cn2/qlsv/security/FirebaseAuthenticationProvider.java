@@ -56,7 +56,7 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
             User user = new User();
             user.setUid(created.getUid());
             user.setPassword("");
-            user.setUsername(created.getEmail());
+            user.setUsername(created.getUsername());
 
             Student student = new Student();
             student.setAvatarUrl(created.getAvatarUrl());
