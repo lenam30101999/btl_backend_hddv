@@ -4,6 +4,8 @@ import com.e17cn2.qlsv.dto.SubjectDTO;
 import com.e17cn2.qlsv.entity.Subject;
 import com.e17cn2.qlsv.service.BaseService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -63,5 +65,13 @@ public class SubjectService extends BaseService {
 
   private Subject getSubjectById(int id){
     return subjectRepository.findSubjectById(id).orElse(null);
+  }
+
+  public SubjectDTO getSubjectByTextSearch(String textSearch){
+    Subject subject = subjectRepository.getSubjectByTextSearch(textSearch);
+    SubjectDTO subjectDTO = new SubjectDTO();
+    subjectDTO.setId(subject.getId());
+    subjectDTO.setSubjectName(subject.getSubjectName());
+    return subjectDTO;
   }
 }
