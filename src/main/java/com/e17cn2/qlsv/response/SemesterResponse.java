@@ -17,6 +17,4 @@ public class SemesterResponse {
   @JsonProperty("semester_name")
   private String semesterName;
 
-  @JsonProperty("points")
-  private List<PointResponse> points;
 }

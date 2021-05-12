@@ -34,6 +34,6 @@ public class PointResponse {
   @JsonProperty("subject")
   private SubjectResponse subjectResponse;
 
-  @JsonIgnore
+  @JsonProperty("semester")
   private SemesterResponse semesterResponse;
 }
