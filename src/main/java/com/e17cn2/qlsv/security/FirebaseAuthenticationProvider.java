@@ -12,9 +12,11 @@ import com.google.api.gax.grpc.GrpcStatusCode;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.api.gax.rpc.UnauthenticatedException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -23,6 +25,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Component
@@ -63,9 +67,19 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
             student.setUser(user);
             studentService.addUser(student, user);
 
+
             return created;
         } catch (InterruptedException | ExecutionException e) {
             throw new SessionAuthenticationException(e.getMessage());
         }
     }
+
+//    @Bean
+//    public void setAdmin() throws FirebaseAuthException {
+//        Map<String, Object> setAdmin = new HashMap<>();
+//        String uid = "1FBjRvzzrleri4xjiDz9wapDppG3";
+//        setAdmin.put(uid,"Admin");
+//        FirebaseAuth.getInstance().setCustomUserClaims(uid,setAdmin);
+//    }
+
 }
