@@ -43,4 +43,12 @@ public class SubjectController {
     List<SubjectDTO> subjectDTOs = subjectService.getAllSubject();
     return new ResponseEntity<>(subjectDTOs, HttpStatus.OK);
   }
+
+  @GetMapping("/search")
+  public ResponseEntity<?> getSubjectByTextSearch(@RequestParam("subject_name") String subjectName){
+    SubjectDTO subjectDTO = subjectService.getSubjectByTextSearch(subjectName);
+    if (Objects.nonNull(subjectDTO)) {
+      return new ResponseEntity<>(subjectDTO, HttpStatus.OK);
+    } else return new ResponseEntity<>(HttpStatus.NOT_FOUND.getReasonPhrase(), HttpStatus.NOT_FOUND);
+  }
 }

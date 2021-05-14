@@ -38,8 +38,8 @@ public class PointController {
   }
 
   @GetMapping
-  public ResponseEntity<?> getAllPoints(@RequestParam("student") int id){
-    List<PointResponse> points = pointService.getAllPointByStudent(id);
+  public ResponseEntity<?> getAllPoints(@RequestParam("student") String uid){
+    List<PointResponse> points = pointService.getAllPointByStudent(uid);
     return new ResponseEntity<>(points, HttpStatus.OK);
   }
 }

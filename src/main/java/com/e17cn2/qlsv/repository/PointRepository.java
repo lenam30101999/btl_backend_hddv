@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface PointRepository extends JpaRepository<Point, Integer> {
   Optional<Point> findPointById(int id);
 
-  List<Point> findPointsByStudentIdOrderBySemesterId(int studentId);
+  List<Point> findPointsByStudentUserUidOrderBySemesterId(String uid);
 }

@@ -3,7 +3,6 @@ package com.e17cn2.qlsv.security;
 
 import com.e17cn2.qlsv.entity.Student;
 import com.e17cn2.qlsv.entity.User;
-import com.e17cn2.qlsv.repository.StudentRepository;
 import com.e17cn2.qlsv.service.impl.StudentService;
 import com.google.api.core.ApiFuture;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +46,7 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
             User user = new User();
             user.setUid(created.getUid());
             user.setPassword("");
-            user.setUsername(created.getEmail());
+            user.setUsername(created.getUsername());
 
             Student student = new Student();
             student.setAvatarUrl(created.getAvatarUrl());
@@ -59,4 +58,13 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
             throw new SessionAuthenticationException(e.getMessage());
         }
     }
+
+//    @Bean
+//    public void setAdmin() throws FirebaseAuthException {
+//        Map<String, Object> setAdmin = new HashMap<>();
+//        String uid = "1FBjRvzzrleri4xjiDz9wapDppG3";
+//        setAdmin.put(uid,"Admin");
+//        FirebaseAuth.getInstance().setCustomUserClaims(uid,setAdmin);
+//    }
+
 }
