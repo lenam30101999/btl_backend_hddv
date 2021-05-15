@@ -3,21 +3,12 @@ package com.e17cn2.qlsv.security;
 
 import com.e17cn2.qlsv.entity.Student;
 import com.e17cn2.qlsv.entity.User;
-import com.e17cn2.qlsv.exception.UnAuthorizedException;
-import com.e17cn2.qlsv.repository.StudentRepository;
 import com.e17cn2.qlsv.service.impl.StudentService;
-import com.e17cn2.qlsv.service.impl.UserService;
 import com.google.api.core.ApiFuture;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.UnauthenticatedException;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -35,9 +26,6 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
 
     @Autowired
     private StudentService studentService;
-
-    @Autowired
-    private StudentRepository studentRepository;
 
     @Override
     public boolean supports(Class<?> authentication) {
@@ -66,7 +54,6 @@ public class FirebaseAuthenticationProvider extends AbstractUserDetailsAuthentic
             student.setAvatarUrl(created.getAvatarUrl());
             student.setUser(user);
             studentService.addUser(student, user);
-
 
             return created;
         } catch (InterruptedException | ExecutionException e) {

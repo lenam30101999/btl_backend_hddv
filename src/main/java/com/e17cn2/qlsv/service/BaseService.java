@@ -1,9 +1,6 @@
 package com.e17cn2.qlsv.service;
 
-import com.e17cn2.qlsv.entity.Manager;
-import com.e17cn2.qlsv.entity.Semester;
-import com.e17cn2.qlsv.entity.Student;
-import com.e17cn2.qlsv.entity.Subject;
+import com.e17cn2.qlsv.entity.*;
 import com.e17cn2.qlsv.mapper.ModelMapper;
 import com.e17cn2.qlsv.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +18,17 @@ public class BaseService {
     return subjectRepository.findSubjectById(id).orElse(null);
   }
 
-  protected Student initStudent(int id){
+  protected Student initStudent(String uid){
     Student student = new Student();
-    student.setId(id);
+    User user = userRepository.findByUid(uid).orElse(null);
+    student.setId(user != null ? user.getId() : 0);
     return student;
   }
 
-  protected Manager initManager(int id){
+  protected Manager initManager(String uid){
     Manager manager = new Manager();
-    manager.setId(id);
+    User user = userRepository.findByUid(uid).orElse(null);
+    manager.setId(user != null ? user.getId() : 1);
     return manager;
   }
 

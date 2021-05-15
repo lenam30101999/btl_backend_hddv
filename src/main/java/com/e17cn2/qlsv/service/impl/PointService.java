@@ -4,13 +4,11 @@ import com.e17cn2.qlsv.dto.PointDTO;
 import com.e17cn2.qlsv.entity.Point;
 import com.e17cn2.qlsv.entity.Subject;
 import com.e17cn2.qlsv.response.PointResponse;
-import com.e17cn2.qlsv.response.SemesterResponse;
 import com.e17cn2.qlsv.service.BaseService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -60,8 +58,8 @@ public class PointService extends BaseService {
     return null;
   }
 
-  public List<PointResponse> getAllPointByStudent(int studentId){
-    List<Point> points = pointRepository.findPointsByStudentIdOrderBySemesterId(studentId);
+  public List<PointResponse> getAllPointByStudent(String studentId){
+    List<Point> points = pointRepository.findPointsByStudentUserUidOrderBySemesterId(studentId);
     return convertPointResponses(points);
   }
 

@@ -30,13 +30,13 @@ public class PointDTO {
   private float avg;
 
   @JsonProperty("student_id")
-  private int studentId;
+  private String studentId;
 
   @JsonProperty("semester_id")
   private int semesterId;
 
   @JsonProperty("manager_id")
-  private int managerId;
+  private String managerId;
 
   @JsonProperty("subject_id")
   private int subjectId;
