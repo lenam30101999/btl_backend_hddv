@@ -1,7 +1,6 @@
 package com.e17cn2.qlsv.controller;
 
 import com.e17cn2.qlsv.dto.PointDTO;
-import com.e17cn2.qlsv.entity.Point;
 import com.e17cn2.qlsv.response.PointResponse;
 import com.e17cn2.qlsv.service.impl.PointService;
 import lombok.extern.log4j.Log4j2;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 
