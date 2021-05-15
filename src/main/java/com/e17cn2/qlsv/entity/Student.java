@@ -18,7 +18,7 @@ import java.util.List;
 public class Student {
 
     @Id
-    private int id;
+    private Integer id;
     @Column(name = "avatar_url")
     private String avatarUrl;
     @Column(name = "student_code")

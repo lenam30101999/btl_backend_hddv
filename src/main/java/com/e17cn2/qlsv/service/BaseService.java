@@ -21,14 +21,14 @@ public class BaseService {
   protected Student initStudent(String uid){
     Student student = new Student();
     User user = userRepository.findByUid(uid).orElse(null);
-    student.setUser(user);
+    student.setId(user != null ? user.getId() : 0);
     return student;
   }
 
   protected Manager initManager(String uid){
     Manager manager = new Manager();
     User user = userRepository.findByUid(uid).orElse(null);
-    manager.setUser(user);
+    manager.setId(user != null ? user.getId() : 1);
     return manager;
   }
 

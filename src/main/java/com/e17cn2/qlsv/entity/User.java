@@ -17,17 +17,23 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    protected Integer id;
+
     @Column(name = "username")
     protected String username;
+
     @Column(name = "password")
     protected String password;
+
     @Column(name = "role_name")
     protected String roleName;
+
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Manager manager;
+
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Student student;
+
     @Column(name = "uid", unique = true, nullable = false)
     private String uid;
 
