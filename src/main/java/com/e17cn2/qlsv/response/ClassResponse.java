@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
@@ -17,5 +15,8 @@ public class ClassResponse {
 
     @JsonProperty("class_name")
     private String className;
+
+    @JsonProperty("subject_id")
+    private int subjectId;
 
 }

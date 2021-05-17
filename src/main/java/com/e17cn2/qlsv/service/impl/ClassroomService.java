@@ -29,9 +29,13 @@ public class ClassroomService extends BaseService {
     }
   }
 
-  public List<ClassResponse> getAllClassroomsBySemester(int semesterId){
+  public List<ClassroomDTO> getAllClassroomsBySemester(int semesterId){
     List<ClassRoom> classRooms = classRoomRepository.findAllBySemesterId(semesterId);
-    return modelMapper.convertClassResponse(classRooms);
+    return convertToClassroomDTOs(classRooms);
+  }
+
+  private List<ClassroomDTO> convertToClassroomDTOs(List<ClassRoom> classRooms){
+    return classRooms.stream().map(modelMapper::convertToClassroomDTO).collect(Collectors.toList());
   }
 
 }

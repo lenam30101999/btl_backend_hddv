@@ -26,7 +26,7 @@ public class ClassroomController {
 
   @GetMapping
   public ResponseEntity<?> getAllClassrooms(@RequestParam("semester_id") int semesterId){
-    List<ClassResponse> classroomDTOs = classRoomService.getAllClassroomsBySemester(semesterId);
+    List<ClassroomDTO> classroomDTOs = classRoomService.getAllClassroomsBySemester(semesterId);
     return new ResponseEntity<>(classroomDTOs, HttpStatus.OK);
   }
 }
