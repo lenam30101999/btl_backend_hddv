@@ -13,8 +13,11 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ModelMapper {
 
-  @Mappings({})
-  List<ClassResponse> convertClassResponse(List<ClassRoom> classRooms);
+  @Mappings({
+      @Mapping(target = "subjectId", source = "subject.id"),
+      @Mapping(target = "semesterId", source = "semester.id")
+  })
+  ClassroomDTO convertToClassroomDTO(ClassRoom classRooms);
 
 
   @Mappings({})
