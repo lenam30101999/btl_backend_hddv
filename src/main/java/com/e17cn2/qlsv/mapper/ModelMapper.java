@@ -40,7 +40,8 @@ public interface ModelMapper {
 
   @Mappings({
       @Mapping(target = "name", source = "user.username"),
-      @Mapping(target = "studentCode", source = "studentCode")
+      @Mapping(target = "studentCode", source = "studentCode"),
+      @Mapping(target = "uid", source = "user.uid")
   })
   StudentDTO convertToStudentDTO(Student student);
 
