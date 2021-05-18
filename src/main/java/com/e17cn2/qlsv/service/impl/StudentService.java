@@ -5,9 +5,11 @@ import com.e17cn2.qlsv.entity.Student;
 import com.e17cn2.qlsv.entity.User;
 import com.e17cn2.qlsv.security.FirebaseUserDetails;
 import com.e17cn2.qlsv.service.BaseService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -22,7 +24,7 @@ public class StudentService extends BaseService {
     }
 
     private List<StudentDTO> convertStudentResponses(List<Student> students){
-        return students.stream().map(p -> modelMapper.convertToStudentDTO(p)).collect(Collectors.toList());
+        return students.stream().map(modelMapper::convertToStudentDTO).collect(Collectors.toList());
     }
 
     public FirebaseUserDetails addUser(Student student, User user){

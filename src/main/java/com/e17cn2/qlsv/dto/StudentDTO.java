@@ -19,4 +19,7 @@ public class StudentDTO {
   @JsonProperty("student_code")
   private String studentCode;
 
+  @JsonProperty("uid")
+  private String uid;
+
 }
